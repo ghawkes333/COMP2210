@@ -1,0 +1,142 @@
+Assignment 2 Notes
+
+_________________________________________________________________________________________________________________________________________________________
+
+Min
+     * Returns the minimum value in the Collection coll as defined by the
+     * Comparator comp. If either coll or comp is null, this method throws an
+     * IllegalArgumentException. If coll is empty, this method throws a
+     * NoSuchElementException. This method will not change coll in any way.
+     *
+     * @param coll    the Collection from which the minimum is selected
+     * @param comp    the Comparator that defines the total order on T
+     * @return        the minimum value in coll
+     * @throws        IllegalArgumentException as per above
+     * @throws        NoSuchElementException as per above
+
+Strategy: check for valid inputs. Examine each element one by one and keep track of the smallest element. Finally, return the smallest element. 
+Alg: 
+   1. Throw IllegalArgumentException if coll or comp is null
+   2. Throw NoSuchElementException if coll is empty
+   3. Create a variable min to keep track of the lowest found value
+   4. Iterate each element in the collection with a for-each loop. Update the variable from Step 3 if the current element is before the lowest found value. 
+   5. Return min
+   
+   
+   
+________________________________________________________________________________________________________________________________________________________
+
+Range
+
+     * Returns a new Collection containing all the values in the Collection coll
+     * that are greater than or equal to low and less than or equal to high, as
+     * defined by the Comparator comp. 
+     
+     The returned collection must contain only
+     * these values and no others. The values low and high themselves do not have
+     * to be in coll. Any duplicate values that are in coll must also be in the
+     * returned Collection. 
+     
+     If no values in coll fall into the specified range or if coll is empty, this method throws a NoSuchElementException (2). 
+     If either
+     * coll or comp is null, this method throws an IllegalArgumentException (2).
+     
+      This method will not change coll in any way.
+     *
+     * @param coll    the Collection from which the range values are selected
+     * @param low     the lower bound of the range
+     * @param high    the upper bound of the range
+     * @param comp    the Comparator that defines the total order on T
+     * @return        a Collection of values between low and high
+     * @throws        IllegalArgumentException as per above
+     * @throws        NoSuchElementException as per above
+     
+Strategy: Check for valid arguments. Create a second Collection newColl. Examine each element in the original collection, and add each element that is between low (inclusive) and high (inclusive) to newColl. Crash with NoSuchElementException if newColl is empty. Return newColl. 
+Algorithm: 
+   1. Throw IllegalArgumentException if coll or comp is null
+   2. Throw NoSuchElementException if comp is empty
+   3. Create Collection newColl
+   4. Iterate through newColl with an Iterator and while loop
+   5. If the current element is greater than or equal to low AND less than or equal to high, then add to newColl
+   6. Throw NoSuchElementException if newColl is empty
+   7. Return newColl
+   
+   Throw NoSuchElementException if it didn't exist in the array
+   
+Things to Test:
+   - next() doesn't skip over first element. AKA, test if it'll include a value that's at the start of the Collection
+   
+   
+   
+________________________________________________________________________________________________________________________________________________________
+
+
+
+Kmin
+     * Selects the kth minimum value from the Collection coll as defined by the
+     * Comparator comp.
+     
+      If either coll or comp is null, this method throws an IllegalArgumentException. 
+     If coll is empty or if there is no kth minimum value, this method throws a NoSuchElementException. 
+     This method will not
+     * change coll in any way.
+     *
+     * @param coll    the Collection from which the kth minimum is selected
+     * @param k       the k-selection value
+     * @param comp    the Comparator that defines the total order on T
+     * @return        the kth minimum value in coll
+     * @throws        IllegalArgumentException as per above
+     * @throws        NoSuchElementException as per above
+
+     Notes to self: 
+     Only allowed to use sort once - use java.util.Collections.sort(List, Comparator)
+
+Strategy: Verify that the coll and comp are valid. Create a copy of the array, and sort it ascending order with the order defined by comp. Count through each element, ignoring duplicates, and return the kth minimum value. Crash with NoSuchElementException if kth min value does not exist. 
+
+  Algorithm: 
+   1. Throw IllegalArgumentException if coll or comp are null
+   2. Throw NoSuchElementException if coll's length is 0
+   3. Create a copy of the array
+   4. Sort in ascending order
+   5. Create a counter variable (init to 1 - because last found is first index value
+   6. Create a lastUniqueValue variable
+   7. Loop through the sorted array
+   8. If the current value is different than lastUniqueValue, update lastUniqueValue to the current value and increment the counter. Return current value if counter = k
+   9. Throw NoSuchElementException if made through entire array
+     
+
+_____________________________________________________________________________________________________________________________
+
+Ceiling
+    /**
+     * Returns the smallest value in the Collection coll that is greater than
+     * or equal to key, as defined by the Comparator comp. 
+     The value of key does not have to be in coll. If coll or comp is null, this method throws
+     * an IllegalArgumentException. 
+     If coll is empty or if there is no
+     * qualifying value, this method throws a NoSuchElementException. 
+     This
+     * method will not change coll in any way.
+     *
+     * @param coll    the Collection from which the ceiling value is selected
+     * @param key     the reference value
+     * @param comp    the Comparator that defines the total order on T
+     * @return        the ceiling value of key in coll
+     * @throws        IllegalArgumentException as per above
+     * @throws        NoSuchElementException as per above
+     */
+
+   Strategy: Verify that the arguments are valid. Create a copy of the list. Look at each element in coll one by one. Remember an element if it is larger than the key and less than a the previously saved element. After looking through the entire list, return the saved value. Crash if no value can be found after searching the list. 
+   
+   Algorithm: 
+      1. Throw IllegalArgumentException if coll or comp are null
+      2. Throw NoSuchElementException if coll is empty
+      3. Create a copy of the collection
+      4. Instanitate a variable "output" and initiaite to null
+      5. Iterate through the collection. 
+      6. If a value comes after the ceiling and before "output" (according to the comparator), then set output to the current value. 
+      7. Return "output" if it is not null
+      8. Throw NoSuchElementException
+      5. 
+      
+      
