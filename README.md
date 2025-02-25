@@ -10,6 +10,6 @@ Overview:
 
 **Module 5** - Implement a Word Search game with matrix operations
 
-**Module 6 **- Develop a Word Ladder game that uses Hamming Distance to chain words
+**Module 6**- Develop a Word Ladder game that uses Hamming Distance to chain words
 
-**Module 7 **- Implement a K Markov Model to generate text that is similar to an input file
+**Module 7**- Implement a K Markov Model to generate text that is similar to an input file
